@@ -1,0 +1,96 @@
+생성자(constructor) & 소멸자 (Destructor)
+
+
+생성자
+    객체가 인스턴스화될 때 자동적으로 호출되는 특별한 멤버 함수
+
+        - 클래스와 동일한 이름 ( 대소문자 전부 일치 해야함. )
+        - 반환 타입이 없음 ( void도 없음 )
+        - 매개변수는 가질 수 있음. 
+
+        MyClass()
+
+
+소멸자
+    인스턴스가 소멸될 때 자동적으로 호출되는 특별한 멤버 함수
+
+        - 클래스와 동일한 이름 ( 대소문자 일치 )
+        - 반환 타입이 없음 ( void도 없음 )
+        - 매개변수 없음.
+        - 클래스 이름 앞에 접두어 '~' (물결표, tilde)가 붙음
+
+        ~MyClass()
+
+        
+생성자와 소멸자를 만들었느냐
+
+    - 멤버 변수 초기화
+    - 기본 작업
+
+
+
+
+기본 생성자 ( Default constructor )
+    매개변수가 없는 생성자
+    기본 생성자는 꼭!!! 괄호 없이 표기해야함.
+
+    Implicit Default constructor
+        생성자를 제공하지 않으면 자동으로 만들어지는 생성자
+        아무런 기능이 없음.
+
+
+    * Uniform Initialization
+        MyClass m1{};   -> 기본 생성자
+        MyClass m2{1, 2}; -> 매개변수가 2개인 생성자
+        MyClass m3{1};  -> 매개변수가 1개인 생성자
+
+※ 기본 생성자가 있는 이유!!!
+    - POD (Plain Old Data) : C 언어 스타일의 데이터 int, float, double struct
+    - 다른 메모리로 혹은 다른 대상 (HDD, Network, Graphic 등)으로 복사가 쉬움
+    - 복잡한 데이터는 문제가 생길 수 있기 때문에 생성자가 필요함.
+    - 암시적 기본 생성자가 존재하면 POD ( 암시적 기본 생성자 : 다른 생성자가 없음 )
+
+EX) 기본 생성자
+        - MyClass()
+        {
+
+        }
+
+        int main()
+        {
+            MyClass m1;
+        }
+
+    생성자
+        - MyClass()
+        {
+            
+        }
+
+        int main()
+        {
+            Myclass m2();
+        }
+
+
+
+int w = 2;                      // COPY INITAIOliZATION
+int x(2);                       // direct initialization
+int y {2};                      // uniform initialization
+int z = {2};                    // uniform copy initialization
+
+
+MyClass m1 = MyClass(2);        // COPY INITAIOliZATION
+MyClass m2(10, 100);            // direct initialization
+MyClass m3 {10, 100};           // uniform initialization
+MyClass m4 = {10, 100};         //uniform copy initialization
+
+
+
+
+멤버 초기화 리스트 (member initializer list)
+
+    <constructor> : <initializer-list>
+    {
+        [body]
+    }
